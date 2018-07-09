@@ -2,7 +2,7 @@ FROM        ec2-deploy:base
 
 ENV         PROJECT_DIR     /srv/project
 
-RUN         apt -y install nginx
+RUN         apt -y install nginx supervisor
 
 COPY        .   ${PROJECT_DIR}
 WORKDIR     ${PROJECT_DIR}
@@ -22,3 +22,9 @@ RUN         cp -f   ${PROJECT_DIR}/.config/nginx.conf \
             rm -f   /etc/nginx/sites-enabled/* && \
             ln -sf  /etc/nginx/sites-available/nginx_app.conf \
                     /etc/nginx/sites-enabled
+
+RUN         cp -f   ${PROJECT_DIR}/.config/supervisor_app.conf \
+                    /etc/supervisor/conf.d/
+
+CMD         supervisord -n
+
