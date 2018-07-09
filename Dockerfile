@@ -9,8 +9,16 @@ WORKDIR     ${PROJECT_DIR}
 
 #ENV         VENV_PATH $(pipenv --venv) 환경변수 설정 이렇게는 안된다
 RUN         export VENV_PATH=$(pipenv --venv); echo $VENV_PATH;
-ENV         VENV_PATH       $VENV_PATH
+#ENV         VENV_PATH       $VENV_PATH
 
 #CMD         pipenv run uwsgi --ini ${PROJECT_DIR}/.config/uwsgi_http.ini
 
 #CMD         nginx -g 'daemon off;'
+
+RUN         cp -f   ${PROJECT_DIR}/.config/nginx.conf \
+                    /etc/nginx/nginx.conf && \
+            cp -f   ${PROJECT_DIR}/.config/nginx_app.conf \
+                    /etc/nginx/sites-available/ && \
+            rm -f   /etc/nginx/sites-enabled/* && \
+            ln -sf  /etc/nginx/sites-available/nginx_app.conf \
+                    /etc/nginx/sites-enabled
