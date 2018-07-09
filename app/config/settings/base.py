@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+import json
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -17,10 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 ROOT_DIR = os.path.dirname(BASE_DIR)
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
-
-
-
-
+SECRET_DIR = os.path.join(ROOT_DIR, '.secrets')
 
 AUTH_USER_MODEL = 'members.User'
 
@@ -28,7 +25,13 @@ AUTH_USER_MODEL = 'members.User'
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^#nrol_o^p&nwsag^zaoue_0-cs=$rs&^ptz9smr_u!r#l_h)!'
+file = os.path.join(SECRET_DIR, 'base.json')
+read_file = open(file, 'rt').read()
+json_dict = json.loads(read_file)
+secret_key = json_dict['SECRET_KEY']
+
+SECRET_KEY = secret_key
+# print(SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 

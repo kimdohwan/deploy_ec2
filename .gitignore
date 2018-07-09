@@ -1,7 +1,13 @@
 
 # Created by https://www.gitignore.io/api/git,linux,macos,django,python,pycharm+all
+
+# 보안 파일
+/.secrets
+
+# 스태틱 파일
 /.static
 /.media
+
 ### Django ###
 *.log
 *.pot
