@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 ROOT_DIR = os.path.dirname(BASE_DIR)
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
-SECRET_DIR = os.path.join(ROOT_DIR, '.secrets')
+SECRETS_DIR = os.path.join(ROOT_DIR, '.secrets')
 
 AUTH_USER_MODEL = 'members.User'
 
@@ -25,7 +25,7 @@ AUTH_USER_MODEL = 'members.User'
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-file = os.path.join(SECRET_DIR, 'base.json')
+file = os.path.join(SECRETS_DIR, 'base.json')
 read_file = open(file, 'rt').read()
 json_dict = json.loads(read_file)
 secret_key = json_dict['SECRET_KEY']

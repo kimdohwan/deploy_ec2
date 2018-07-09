@@ -1,5 +1,7 @@
 from .base import *
 
+secrets = json.load(open(os.path.join(SECRETS_DIR, 'dev.json')))
+
 # static
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
@@ -10,13 +12,7 @@ MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # db
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
+DATABASES = secrets['DATABASES']
 DEBUG = True
 
 # ALLOWED_HOSTS는 로컬에서는 없어도 localhost로 자동설정 됨
