@@ -8,3 +8,4 @@
 #     배포용 설정, Debug 메시지 출력 안함
 
 from .local import *
+print('settings.__init__')

@@ -7,7 +7,7 @@ STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
 MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
 
 # wsgi
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.local.application'
 
 # db
 DATABASES = {
@@ -18,7 +18,7 @@ DATABASES = {
 }
 
 DEBUG = True
-
+print(DATABASES)
 # ALLOWED_HOSTS는 로컬에서는 없어도 localhost로 자동설정 됨
 # ALLOWED_HOSTS = [
 #     'localhost',
