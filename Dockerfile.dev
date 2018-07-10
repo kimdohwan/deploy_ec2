@@ -3,9 +3,9 @@ FROM        ec2-deploy:base
 ENV         PROJECT_DIR     /srv/project
 
 RUN         apt -y install nginx supervisor
-ENV         DJANGO_SETTINGS_MODULE config.settings.dev
 
 ENV         BUILD_MODE      dev
+ENV         DJANGO_SETTINGS_MODULE config.settings.dev
 
 COPY        .   ${PROJECT_DIR}
 WORKDIR     ${PROJECT_DIR}

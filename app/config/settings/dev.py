@@ -4,8 +4,9 @@ secrets = json.load(open(os.path.join(SECRETS_DIR, 'dev.json')))
 
 # static
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
+
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
 
 # wsgi
